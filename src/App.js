@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Word from './components/Word'
-import Loop from './components/Loop';
+import List from './components/List';
+// import Loop from './components/Loop';
 
 class App extends Component {
   render() {
@@ -10,7 +10,8 @@ class App extends Component {
         {/* <Word wordInfo={{en : 'One' , vn : 'Mot' , isMemorized : true}}/>
         <Word wordInfo={{en : "Two", vn : "Hai" , isMemorized : false}}/>
         <Word wordInfo={{en : "Three" , vn : "Ba" , isMemorized : true}}/>   */}
-        <Loop/>
+        {/* <Loop/> */}
+        <List/>
       </div>
     );
   }
