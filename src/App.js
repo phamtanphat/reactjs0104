@@ -13,9 +13,9 @@ class App extends Component {
         <Word wordInfo={{en : "Two", vn : "Hai" , isMemorized : false}}/>
         <Word wordInfo={{en : "Three" , vn : "Ba" , isMemorized : true}}/>   */}
         {/* <Loop/> */}
-        {/* <List/> */}
+        <List/>
         {/* <Box/> */}
-        <Form/>
+        {/* <Form/> */}
       </div>
     );
   }
