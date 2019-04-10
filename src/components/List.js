@@ -8,7 +8,9 @@ export default class List extends Component {
                 {id : 'a2' , en : 'Two' , vn : 'Hai' , isMemorized : false},
                 {id : 'a3' , en : 'Three' , vn : 'Ba' , isMemorized : false},
                 {id : 'a4' , en : 'Four' , vn : 'Bon' , isMemorized : true},
-            ]
+            ],
+            txtEn : '',
+            txtVn : ''
         }
     }
     togglWord(id){
@@ -64,7 +66,18 @@ export default class List extends Component {
                     onChange={evt => this.setState({txtVn : evt.target.value})}/>
                 <br />
                 <div className="btn-container">
-                    <button className="btn btn-success">
+                    <button 
+                        onClick={() => {
+                            const newWord = {
+                                id : Math.random(),
+                                en : this.state.txtEn,
+                                vn : this.state.txtVn,
+                                isMemorized : false
+                            } 
+                            const newWords = this.state.words.concat(newWord);
+                            this.setState({words : newWords});
+                        }}
+                        className="btn btn-success">
                         Add word
                     </button>
                     <button
