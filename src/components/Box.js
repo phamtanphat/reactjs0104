@@ -7,9 +7,17 @@ export default class Box extends Component {
        value : 0
     }
     this.increase = this.increase.bind(this);
+    this.descrease = this.descrease.bind(this);
+    this.reset = this.reset.bind(this);
   }
   increase(){
     this.setState({value : this.state.value + 1})
+  }
+  descrease(){
+    this.setState({value : this.state.value - 1})
+  }
+  reset(){
+    this.setState({value : 0})
   }
 
   render() {
@@ -22,12 +30,12 @@ export default class Box extends Component {
           Increase
         </button>
         <button 
-          onClick={() =>  this.setState({value : this.state.value - 1}) }
+          onClick={this.descrease}
           className="btn btn-warning">
           Descrease
         </button>
         <button 
-          onClick={() =>  this.setState({value : 0}) }
+          onClick={this.reset }
           className="btn btn-danger">
           Reset
         </button>
