@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Word from '../components/Word';
 
 const words = [
     {id : 'a1' , en : 'One' , vn : 'Mot' , isMemorized : true},
@@ -12,7 +11,7 @@ export default class List extends Component {
     return (
        <div>
            {words.map(word => (
-                <div className="word">
+                <div className="word" key={word.id}>
                     <div className="word-container">
                     <h3 className="text-success">{word.en}</h3>
                     <h3 className="text-danger">
@@ -20,7 +19,8 @@ export default class List extends Component {
                     </h3>
                     </div>
                     <div className="btn-container">
-                    <button 
+                    <button
+                        onClick={() => console.log("a123")} 
                         className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
                         {word.isMemorized ? 'Forgot' : 'Memorized'}
                     </button>
