@@ -24,7 +24,6 @@ export default class List extends Component {
                         className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
                         {word.isMemorized ? 'Forgot' : 'Memorized'}
                     </button>
-            
                     <button className="btn btn-warning" >
                         Remove
                     </button>
