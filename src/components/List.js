@@ -11,6 +11,13 @@ export default class List extends Component {
         ]
       }
   }
+  togglWord(id){
+    const newWords = this.state.words.map(w => {
+        if(id !== w.id) return w;
+        return {...w, isMemorized : !w.isMemorized}
+    });
+    this.setState({words : newWords});
+  }
   render() {
     return (
        <div>
@@ -24,13 +31,7 @@ export default class List extends Component {
                     </div>
                     <div className="btn-container">
                     <button
-                        onClick={() => {
-                            const newWords = this.state.words.map(w => {
-                                if(word.id !== w.id) return w;
-                                return {...w, isMemorized : !w.isMemorized}
-                            });
-                            this.setState({words : newWords});
-                        }} 
+                        onClick={() =>this.togglWord(word.id)} 
                         className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
                         {word.isMemorized ? 'Forgot' : 'Memorized'}
                     </button>
