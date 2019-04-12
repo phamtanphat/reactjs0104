@@ -6,12 +6,12 @@ export default class List extends Component {
             words : [
                 {id : 'a1' , en : 'One' , vn : 'Mot' , isMemorized : true},
                 {id : 'a2' , en : 'Two' , vn : 'Hai' , isMemorized : false},
-                {id : 'a3' , en : 'Three' , vn : 'Ba' , isMemorized : false},
-                {id : 'a4' , en : 'Four' , vn : 'Bon' , isMemorized : true},
+                {id : 'a3' , en : 'Three' , vn : 'Ba' , isMemorized : false}
             ],
             txtEn : '',
             txtVn : ''
         }
+        this.addWord = this.addWord.bind(this);
     }
     togglWord(id){
         const newWords = this.state.words.map(w => {
@@ -61,6 +61,13 @@ export default class List extends Component {
     render() {
         return (
         <div>
+            <div>
+                <button 
+                    className="btn btn-success"
+                    style={{width : 200 , margin : 10 , borderRadius : 10 }}>
+                        +
+                </button>
+            </div>
             <div className="form-group word-from" >
                     <input
                         placeholder="English"
@@ -77,7 +84,7 @@ export default class List extends Component {
                     <br />
                     <div className="btn-container">
                         <button 
-                            onClick={() => this.addWord()}
+                            onClick={this.addWord}
                             className="btn btn-success">
                             Add word
                         </button>
