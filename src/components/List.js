@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Word from './Word';
 export default class List extends Component {
     constructor(props){
         super(props);
@@ -27,30 +28,7 @@ export default class List extends Component {
         const words = this.state.words.filter(w =>w.id !== id);
         this.setState({words});
     }
-    getWordItem(word){
-        return (
-            <div className="word" key={word.id}>
-                <div className="word-container">
-                <h3 className="text-success">{word.en}</h3>
-                <h3 className="text-danger">
-                    {word.isMemorized ? '----' : word.vn}
-                </h3>
-                </div>
-                <div className="btn-container">
-                <button
-                    onClick={() =>this.togglWord(word.id)} 
-                    className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
-                    {word.isMemorized ? 'Forgot' : 'Memorized'}
-                </button>
-                <button 
-                    onClick={() =>this.removeWord(word.id)}
-                    className="btn btn-warning" >
-                    Remove
-                </button>
-                </div>
-            </div>
-        )
-    }
+    
     addWord(){
         const newWord = {
             id : Math.random(),
@@ -126,7 +104,7 @@ export default class List extends Component {
                 if(this.state.filterMode === 'Show_Memorized' && w.isMemorized) return false;
                 return true;
                 
-            }).map(word => this.getWordItem(word))}
+            }).map(word => <Word word={word} key={word.id}/>)}
         </div>
         )
     }
