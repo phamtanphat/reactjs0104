@@ -3,8 +3,8 @@ import './App.css';
 import List from './components/List';
 import Box from './components/Box';
 import Form from './components/Form';
+import Filter from './components/Filter';
 // import Loop from './components/Loop';
-
 class App extends Component {
   render() {
     return (
@@ -13,9 +13,10 @@ class App extends Component {
         <Word wordInfo={{en : "Two", vn : "Hai" , isMemorized : false}}/>
         <Word wordInfo={{en : "Three" , vn : "Ba" , isMemorized : true}}/>   */}
         {/* <Loop/> */}
-        <List/>
+        {/* <List/> */}
         {/* <Box/> */}
         {/* <Form/> */}
+        <Filter/>
       </div>
     );
   }
