@@ -122,7 +122,6 @@ export default class List extends Component {
                 <option value="Show_Memorized">Show_Memorized</option>
             </select>            
             {this.state.words.filter(w => {
-                
                 if(this.state.filterMode === 'Show_Forgot' && !w.isMemorized) return false;
                 if(this.state.filterMode === 'Show_Memorized' && w.isMemorized) return false;
                 return true;
