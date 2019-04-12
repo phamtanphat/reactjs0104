@@ -13,6 +13,7 @@ export default class List extends Component {
             shouldShowForm : false
         }
         this.addWord = this.addWord.bind(this);
+        this.toggleForm = this.toggleForm.bind(this);
     }
     togglWord(id){
         const newWords = this.state.words.map(w => {
@@ -60,10 +61,14 @@ export default class List extends Component {
         this.setState({words : newWords , txtEn : '' , txtVn : ''});
     }
     toggleForm(){
+        this.setState({shouldShowForm : !this.state.shouldShowForm});
+    }
+    getForm(){
         if(!this.state.shouldShowForm){
             return (
                 <div>
                     <button 
+                        onClick={this.toggleForm}
                         className="btn btn-success"
                         style={{width : 200 , margin : 10 , borderRadius : 10 }}>
                             +
@@ -93,6 +98,7 @@ export default class List extends Component {
                             Add word
                         </button>
                         <button
+                            onClick={this.toggleForm}
                             className="btn btn-danger">
                             Cancel
                         </button>
@@ -104,7 +110,7 @@ export default class List extends Component {
     render() {
         return (
         <div>
-            {this.toggleForm()}            
+            {this.getForm()}            
             {this.state.words.map(word => this.getWordItem(word))}
         </div>
         )
