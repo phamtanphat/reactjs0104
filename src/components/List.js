@@ -59,17 +59,20 @@ export default class List extends Component {
         const newWords = this.state.words.concat(newWord);
         this.setState({words : newWords , txtEn : '' , txtVn : ''});
     }
-    render() {
-        return (
-        <div>
-            <div>
-                <button 
-                    className="btn btn-success"
-                    style={{width : 200 , margin : 10 , borderRadius : 10 }}>
-                        +
-                </button>
-            </div>
-            <div className="form-group word-from" >
+    toggleForm(){
+        if(!this.state.shouldShowForm){
+            return (
+                <div>
+                    <button 
+                        className="btn btn-success"
+                        style={{width : 200 , margin : 10 , borderRadius : 10 }}>
+                            +
+                    </button>
+                </div>
+            )
+        }else{
+            return (
+                <div className="form-group word-from" >
                     <input
                         placeholder="English"
                         className="form-control"
@@ -95,6 +98,13 @@ export default class List extends Component {
                         </button>
                     </div>
                 </div>
+            )
+        }
+    }
+    render() {
+        return (
+        <div>
+            {this.toggleForm()}            
             {this.state.words.map(word => this.getWordItem(word))}
         </div>
         )
