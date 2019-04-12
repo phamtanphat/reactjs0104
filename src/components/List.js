@@ -14,7 +14,7 @@ export default class List extends Component {
             shouldShowForm : false,
             filterMode : 'Show_All'
         }
-        this.addWord = this.addWord.bind(this);
+        this.onAddWord = this.onAddWord.bind(this);
         this.onToggleForm = this.onToggleForm.bind(this);
     }
     togglWord(id){
@@ -29,15 +29,9 @@ export default class List extends Component {
         this.setState({words});
     }
     
-    addWord(){
-        const newWord = {
-            id : Math.random(),
-            en : this.state.txtEn,
-            vn : this.state.txtVn,
-            isMemorized : false
-        } 
+    onAddWord(newWord){
         const newWords = this.state.words.concat(newWord);
-        this.setState({words : newWords , txtEn : '' , txtVn : ''});
+        this.setState({words : newWords });
     }
     onToggleForm(){
         this.setState({shouldShowForm : !this.state.shouldShowForm});
@@ -49,6 +43,7 @@ export default class List extends Component {
             <Form 
                 shouldShowForm={this.state.shouldShowForm}
                 onToggleForm={this.onToggleForm}
+                onAddWord={this.onAddWord}
             />
             <br/>
             <Filter filterMode={this.state.filterMode}/>            

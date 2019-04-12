@@ -7,6 +7,17 @@ export default class Form extends Component {
             txtEn : '',
             txtVn : ''
         }
+        this.addWord = this.addWord.bind(this);
+    }
+    addWord(){
+        const newWord = {
+            id : Math.random(),
+            en : this.state.txtEn,
+            vn : this.state.txtVn,
+            isMemorized : false
+        }
+        this.props.onAddWord(newWord);
+        this.setState({txtEn : '' , txtVn : ''})
     }
     render() {
         return (
@@ -39,7 +50,7 @@ export default class Form extends Component {
                     <br />
                     <div className="btn-container">
                         <button 
-                            
+                            onClick={this.addWord}
                             className="btn btn-success">
                             Add word
                         </button>
