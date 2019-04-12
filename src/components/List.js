@@ -9,7 +9,8 @@ export default class List extends Component {
                 {id : 'a3' , en : 'Three' , vn : 'Ba' , isMemorized : false}
             ],
             txtEn : '',
-            txtVn : ''
+            txtVn : '',
+            shouldShowForm : false
         }
         this.addWord = this.addWord.bind(this);
     }
