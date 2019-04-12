@@ -16,7 +16,7 @@ export default class Form extends Component {
                 ?
                 <div>
                     <button 
-                        onClick={this.toggleForm}
+                        onClick={this.props.onToggleForm}
                         className="btn btn-success"
                         style={{width : 200 , margin : 10 , borderRadius : 10 }}>
                             +
@@ -39,12 +39,12 @@ export default class Form extends Component {
                     <br />
                     <div className="btn-container">
                         <button 
-                            onClick={this.addWord}
+                            
                             className="btn btn-success">
                             Add word
                         </button>
                         <button
-                            onClick={this.toggleForm}
+                            onClick={this.props.onToggleForm}
                             className="btn btn-danger">
                             Cancel
                         </button>

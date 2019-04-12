@@ -15,7 +15,7 @@ export default class List extends Component {
             filterMode : 'Show_All'
         }
         this.addWord = this.addWord.bind(this);
-        this.toggleForm = this.toggleForm.bind(this);
+        this.onToggleForm = this.onToggleForm.bind(this);
     }
     togglWord(id){
         const newWords = this.state.words.map(w => {
@@ -39,14 +39,17 @@ export default class List extends Component {
         const newWords = this.state.words.concat(newWord);
         this.setState({words : newWords , txtEn : '' , txtVn : ''});
     }
-    toggleForm(){
+    onToggleForm(){
         this.setState({shouldShowForm : !this.state.shouldShowForm});
     }
 
     render() {
         return (
         <div>
-            <Form shouldShowForm={this.state.shouldShowForm}/>
+            <Form 
+                shouldShowForm={this.state.shouldShowForm}
+                onToggleForm={this.onToggleForm}
+            />
             <br/>
             <Filter filterMode={this.state.filterMode}/>            
             {this.state.words.filter(w => {
