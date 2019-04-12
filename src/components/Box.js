@@ -6,14 +6,18 @@ export default class Box extends Component {
     this.state = {
        value : 0
     }
+    this.onIncrease = this.onIncrease.bind(this);
 }
 
+  onIncrease(){
+    this.setState({value : this.state.value + 1});
+  }
 
   render() {
     return (
       <div>
         <h3>Value = {this.state.value}</h3>
-        <Child/>
+        <Child onIncrease={this.onIncrease}/>
       </div>
     )
   }
