@@ -10,7 +10,8 @@ export default class List extends Component {
             ],
             txtEn : '',
             txtVn : '',
-            shouldShowForm : false
+            shouldShowForm : false,
+            filterMode : 'Show_All'
         }
         this.addWord = this.addWord.bind(this);
         this.toggleForm = this.toggleForm.bind(this);
@@ -110,8 +111,23 @@ export default class List extends Component {
     render() {
         return (
         <div>
-            {this.getForm()}            
-            {this.state.words.map(word => this.getWordItem(word))}
+            {this.getForm()}
+            <select  
+                className="word"
+                value={this.state.filterMode}
+                onChange={evt => this.setState({filterMode : evt.target.value})}
+            >
+                <option value="Show_All">Show_All</option>
+                <option value="Show_Forgot">Show_Forgot</option>
+                <option value="Show_Memorized">Show_Memorized</option>
+            </select>            
+            {this.state.words.filter(w => {
+                
+                if(this.state.filterMode === 'Show_Forgot' && !w.isMemorized) return false;
+                if(this.state.filterMode === 'Show_Memorized' && w.isMemorized) return false;
+                return true;
+                
+            }).map(word => this.getWordItem(word))}
         </div>
         )
     }

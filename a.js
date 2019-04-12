@@ -6,6 +6,7 @@ const teo = {
         console.log(`Xin chao ban ${this.name}`);
     }
 }
-
+// teo.address = "20"
 const ti = teo.sayhello;
-ti.bind({name : 'Teo'})();
+// ti.bind({name : 'Teo'})();
+// console.log(teo.address);
