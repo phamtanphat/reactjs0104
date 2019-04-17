@@ -16,8 +16,9 @@ export default class List extends Component {
         }
         this.onAddWord = this.onAddWord.bind(this);
         this.onToggleForm = this.onToggleForm.bind(this);
+        this.onTogglWord = this.onTogglWord.bind(this);
     }
-    togglWord(id){
+    onTogglWord(id){
         const newWords = this.state.words.map(w => {
             if(id !== w.id) return w;
             return {...w, isMemorized : !w.isMemorized}
@@ -52,7 +53,11 @@ export default class List extends Component {
                 if(this.state.filterMode === 'Show_Memorized' && w.isMemorized) return false;
                 return true;
                 
-            }).map(word => <Word word={word} key={word.id}/>)}
+            }).map(word => 
+            <Word 
+                word={word} 
+                key={word.id}
+                onTogglWord={this.onTogglWord}/>)}
         </div>
         )
     }

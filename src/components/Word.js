@@ -13,6 +13,7 @@ export default class Word extends Component{
                 </div>
                 <div className="btn-container">
                 <button
+                    onClick={() => this.props.onTogglWord(word.id)}
                     className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
