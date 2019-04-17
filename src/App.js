@@ -19,6 +19,7 @@ const store = createStore((state = defaultState , action) =>{
  
   return state;
 })
+//https://bit.ly/2Gd8oHq
 
 class App extends Component {
   render() {
