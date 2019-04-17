@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-import Box from './components/Box';
+// import Box from './components/Box';
+import List from './components/List';
 import { createStore } from 'redux'
 import {Provider} from 'react-redux';
 
+const defaultState = {
+  words : [
+    {id : 'a1' , en : 'One' , vn : 'Mot' , isMemorized : true},
+    {id : 'a2' , en : 'Two' , vn : 'Hai' , isMemorized : false},
+    {id : 'a3' , en : 'Three' , vn : 'Ba' , isMemorized : false}
+  ],
+  shouldShowForm : false,
+  filterMode : 'Show_All'
+}
 
-const store = createStore((state = {value : 0} , action) =>{
-  if(action.type === 'INCREASE'){
-    return {count : action.count ,value : state.value + 1}
-  }
+const store = createStore((state = defaultState , action) =>{
+ 
   return state;
 })
 
@@ -19,7 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={store}>
-          <Box/>
+          <List/>
         </Provider>
       </div>
     );

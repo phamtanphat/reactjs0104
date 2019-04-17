@@ -10,11 +10,13 @@ class Child extends Component {
           className="btn btn-success">
           Increase
         </button>
-        <button 
+        <button
+          onClick={() => this.props.dispatch({type : 'DESCREASE'})} 
           className="btn btn-warning">
           Descrease
         </button>
-        <button 
+        <button
+          onClick={() => this.props.dispatch({type : 'RESET'})} 
           className="btn btn-danger">
           Reset
         </button>
