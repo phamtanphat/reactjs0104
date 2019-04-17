@@ -18,6 +18,7 @@ export default class Word extends Component{
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
                 <button 
+                    onClick={() => this.props.onRemoveWord(word.id)}
                     className="btn btn-warning" >
                     Remove
                 </button>
