@@ -1,23 +1,20 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class Child extends Component {
+class Child extends Component {
   render() {
-    // const that = this.props.that;
-    const {onIncrease , onDescrease , onReset} = this.props;
     return (
       <div>
         <button
-          onClick={onIncrease} 
+          onClick={() => this.props.dispatch({type : 'INCREASE'})}
           className="btn btn-success">
           Increase
         </button>
         <button 
-          onClick={onDescrease} 
           className="btn btn-warning">
           Descrease
         </button>
         <button 
-          onClick={onReset}
           className="btn btn-danger">
           Reset
         </button>
@@ -25,3 +22,5 @@ export default class Child extends Component {
     )
   }
 }
+
+export default connect()(Child);
