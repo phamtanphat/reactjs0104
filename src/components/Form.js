@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
-export default class Form extends Component {
+import {connect} from 'react-redux';
+class Form extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -66,3 +66,8 @@ export default class Form extends Component {
         )
     }
 }
+
+const mapStateToProps = function(state){
+    return {shouldShowForm : state.shouldShowForm}
+}
+export default connect(mapStateToProps)(Form);

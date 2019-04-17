@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Word from './Word';
 import Form from './Form';
 import Filter from './Filter';
-
 import {connect} from 'react-redux';
 class List extends Component {
     render() {

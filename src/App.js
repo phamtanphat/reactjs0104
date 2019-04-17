@@ -20,8 +20,6 @@ const store = createStore((state = defaultState , action) =>{
   return state;
 })
 
-
-
 class App extends Component {
   render() {
     return (
