@@ -27,6 +27,9 @@ const store = createStore((state = defaultState , action) =>{
     });
     return {...state , words :newWords}
   }
+  if(action.type === 'SET_FILTER_MODE') return {...state , filterMode : action.filterMode}
+
+  
   return state;
 })
 

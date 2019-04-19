@@ -8,7 +8,7 @@ class Filter extends Component {
             <select  
                 className="word"
                 value={filterMode}
-                onChange={_ => _}
+                onChange={evt => this.props.dispatch({type : 'SET_FILTER_MODE' , filterMode : evt.target.value})}
             >
                 <option value="Show_All">Show_All</option>
                 <option value="Show_Forgot">Show_Forgot</option>
