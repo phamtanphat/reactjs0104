@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 class Word extends Component{
     render(){
         const word = this.props.word;
+        const {dispatch} = this.props;
         return(
             <div className="word" >
                 <div className="word-container">
@@ -13,11 +14,12 @@ class Word extends Component{
                 </div>
                 <div className="btn-container">
                 <button
+                    onClick={() => dispatch({type : 'TOGGLE_WORD' , id : word.id})}
                     className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
                 <button 
-                    onClick={() => this.props.dispatch({type : 'REMOVE_WORD' , id : word.id})}
+                    onClick={() => dispatch({type : 'REMOVE_WORD' , id : word.id})}
                     className="btn btn-warning" >
                     Remove
                 </button>
