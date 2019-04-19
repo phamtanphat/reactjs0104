@@ -28,7 +28,11 @@ const store = createStore((state = defaultState , action) =>{
     return {...state , words :newWords}
   }
   if(action.type === 'SET_FILTER_MODE') return {...state , filterMode : action.filterMode}
-
+  if(action.type === 'ADD_WORD'){
+     const newWords = state.words.concat(action.word);
+     return {...state,words : newWords , shouldShowForm : false}
+  }
+  if(action.type === 'TOGGLE_FORM') return {...state , shouldShowForm : !state.shouldShowForm}
   
   return state;
 })

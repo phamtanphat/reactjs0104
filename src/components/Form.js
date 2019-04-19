@@ -8,6 +8,7 @@ class Form extends Component {
             txtVn : ''
         }
         this.addWord = this.addWord.bind(this);
+        this.toggleForm = this.toggleForm.bind(this);
     }
     addWord(){
         const newWord = {
@@ -16,8 +17,11 @@ class Form extends Component {
             vn : this.state.txtVn,
             isMemorized : false
         }
-        this.props.onAddWord(newWord);
+        this.props.dispatch({type : 'ADD_WORD' , word : newWord});
         this.setState({txtEn : '' , txtVn : ''})
+    }
+    toggleForm(){
+        this.props.dispatch({type : 'TOGGLE_FORM'})
     }
     render() {
         return (
@@ -27,7 +31,7 @@ class Form extends Component {
                 ?
                 <div>
                     <button 
-                        onClick={this.props.onToggleForm}
+                        onClick={this.toggleForm}
                         className="btn btn-success"
                         style={{width : 200 , margin : 10 , borderRadius : 10 }}>
                             +
@@ -55,7 +59,7 @@ class Form extends Component {
                             Add word
                         </button>
                         <button
-                            onClick={this.props.onToggleForm}
+                            onClick={this.toggleForm}
                             className="btn btn-danger">
                             Cancel
                         </button>
