@@ -16,9 +16,13 @@ const defaultState = {
 }
 
 const store = createStore((state = defaultState , action) =>{
- 
+  if(action.type === "REMOVE_WORD"){
+    const newWords = state.words.filter(w => w.id !== action.id);
+    return {...state,words : newWords}
+  }
   return state;
 })
+
 //https://bit.ly/2Gd8oHq
 
 // 1 : Định nghĩa ra store =>

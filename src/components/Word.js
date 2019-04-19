@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
-
-export default class Word extends Component{
+import {connect} from 'react-redux';
+class Word extends Component{
     render(){
         const word = this.props.word;
         return(
@@ -13,12 +13,11 @@ export default class Word extends Component{
                 </div>
                 <div className="btn-container">
                 <button
-                    onClick={() => this.props.onTogglWord(word.id)}
                     className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
                 <button 
-                    onClick={() => this.props.onRemoveWord(word.id)}
+                    onClick={() => this.props.dispatch({type : 'REMOVE_WORD' , id : word.id})}
                     className="btn btn-warning" >
                     Remove
                 </button>
@@ -27,3 +26,5 @@ export default class Word extends Component{
         )
     }
 }
+
+export default connect()(Word);

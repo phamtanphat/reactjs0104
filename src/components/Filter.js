@@ -8,6 +8,7 @@ class Filter extends Component {
             <select  
                 className="word"
                 value={filterMode}
+                onChange={_ => _}
             >
                 <option value="Show_All">Show_All</option>
                 <option value="Show_Forgot">Show_Forgot</option>
