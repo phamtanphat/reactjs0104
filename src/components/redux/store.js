@@ -8,8 +8,8 @@ const defaultState = {
     shouldShowForm : false,
     filterMode : 'Show_All'
   }
-  
-const store = createStore((state = defaultState , action) =>{
+
+function reducer (state = defaultState , action){
     if(action.type === "REMOVE_WORD"){
       const newWords = state.words.filter(w => w.id !== action.id);
       return {...state,words : newWords}
@@ -29,6 +29,7 @@ const store = createStore((state = defaultState , action) =>{
     if(action.type === 'TOGGLE_FORM') return {...state , shouldShowForm : !state.shouldShowForm}
     
     return state;
-  });
+  }
+const store = createStore(reducer);
 
 export default store;
