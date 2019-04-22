@@ -36,13 +36,27 @@ function wordsReducer(state = defaultWords , action){
     if(action.type === "REMOVE_WORD"){
         const newWords = state.filter(w => w.id !== action.id);
         return newWords;
-      }
+    }
+    if(action.type === 'TOGGLE_WORD'){
+        const newWords = state.map(w =>{
+            if(w.id !== action.id) return w;
+            return {...w, isMemorized : !w.isMemorized}
+        });
+        return newWords;
+    }
+    if(action.type === 'ADD_WORD'){
+        let newWords = state.concat(action.word);
+        return newWords;
+    }
     return state;
 }
 function shouldShowFormReducer(state = false , action){
+    if(action.type === 'ADD_WORD') return false;
+    if(action.type === 'TOGGLE_FORM') return !state
     return state;
 }
 function filterModeReducer(state = 'Show_ALL' , action){
+    if(action.type === 'SET_FILTER_MODE') return action.filterMode
     return state;
 }
 const store = createStore(reducer);
