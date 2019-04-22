@@ -45,7 +45,8 @@ function wordsReducer(state = defaultWords , action){
         return newWords;
     }
     if(action.type === 'ADD_WORD'){
-        let newWords = state.concat(action.word);
+        let newWords = Object.assign([] , state);
+        newWords.unshift(action.word);
         return newWords;
     }
     return state;
