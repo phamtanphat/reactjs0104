@@ -10,7 +10,11 @@
 // const ti = teo.sayhello;
 // ti.bind({name : 'Teo'})();
 // console.log(teo.address);
-function tinhcong(a , b = 5){
-    return a + b;
-}
-console.log(tinhcong(6));
+// function tinhcong(a , b = 5){
+//     return a + b;
+// }
+// console.log(tinhcong(6));
+const a = {name : 10 , age : 20};
+const b = a;
+
+console.log(a === b);
