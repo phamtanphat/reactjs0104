@@ -3,7 +3,16 @@ import Word from './Word';
 import Form from './Form';
 import Filter from './Filter';
 import {connect} from 'react-redux';
+import axios from 'axios';
 class List extends Component {
+
+    componentWillMount(){
+        // Neu dung tu android truy vao localhost thong qua ipv4 : http://10.0.0.105:4000/words
+        const URL = "http://localhost:4000/words";
+        axios.get(URL)
+        .then(response => console.log(response.data.words));
+    }
+
     render() {
         return (
         <div>
