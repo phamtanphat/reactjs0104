@@ -27,7 +27,7 @@ class List extends Component {
             }).map(word => 
             <Word 
                 word={word} 
-                key={word.id}/>)}
+                key={word._id}/>)}
         </div>
         )
     }

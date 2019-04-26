@@ -15,12 +15,12 @@ class Word extends Component{
                 </div>
                 <div className="btn-container">
                 <button
-                    onClick={() => this.props.toggleWord(word.id)}
+                    onClick={() => this.props.toggleWord(word._id)}
                     className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
                 <button 
-                    onClick={() => this.props.removeWord(word.id)}
+                    onClick={() => this.props.removeWord(word._id)}
                     className="btn btn-warning" >
                     Remove
                 </button>
