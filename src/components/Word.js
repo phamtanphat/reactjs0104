@@ -1,5 +1,7 @@
 import React , {Component} from 'react';
 import {connect} from 'react-redux';
+import * as actioncreators from './redux/actioncreators';
+
 class Word extends Component{
     render(){
         const word = this.props.word;
@@ -19,7 +21,7 @@ class Word extends Component{
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
                 <button 
-                    onClick={() => dispatch({type : 'REMOVE_WORD' , id : word.id})}
+                    onClick={() => this.props.removeWord(word.id)}
                     className="btn btn-warning" >
                     Remove
                 </button>
@@ -29,4 +31,4 @@ class Word extends Component{
     }
 }
 
-export default connect()(Word);
+export default connect(null,actioncreators)(Word);
