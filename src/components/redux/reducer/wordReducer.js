@@ -1,9 +1,6 @@
-const defaultWords = [
-    {id : 'a1' , en : 'One' , vn : 'Mot' , isMemorized : true},
-    {id : 'a2' , en : 'Two' , vn : 'Hai' , isMemorized : false},
-    {id : 'a3' , en : 'Three' , vn : 'Ba' , isMemorized : false}
-]
-export function wordsReducer(state = defaultWords , action){
+
+export function wordsReducer(state = [] , action){
+    if(action.type === "SET_ALL_WORDS") return action.words;
     if(action.type === "REMOVE_WORD"){
         const newWords = state.filter(w => w.id !== action.id);
         return newWords;

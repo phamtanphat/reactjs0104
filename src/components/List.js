@@ -10,7 +10,7 @@ class List extends Component {
         // Neu dung tu android truy vao localhost thong qua ipv4 : http://10.0.0.105:4000/words
         const URL = "http://localhost:4000/words";
         axios.get(URL)
-        .then(response => console.log(response.data.words));
+        .then(response => this.props.dispatch({type : 'SET_ALL_WORDS' , words : response.data.words}));
     }
 
     render() {
