@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
+import * as actioncreators from './redux/actioncreators';
+
 class Form extends Component {
     constructor(props){
         super(props);
@@ -17,11 +19,11 @@ class Form extends Component {
             vn : this.state.txtVn,
             isMemorized : false
         }
-        this.props.dispatch({type : 'ADD_WORD' , word : newWord});
+        this.props.addWord(newWord);
         this.setState({txtEn : '' , txtVn : ''})
     }
     toggleForm(){
-        this.props.dispatch({type : 'TOGGLE_FORM'})
+        this.props.toggleForm();
     }
     render() {
         return (
@@ -74,4 +76,4 @@ class Form extends Component {
 const mapStateToProps = function(state){
     return {shouldShowForm : state.shouldShowForm}
 }
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps,actioncreators)(Form);
