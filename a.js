@@ -14,7 +14,6 @@
 //     return a + b;
 // }
 // console.log(tinhcong(6));
-const a = {name : 10 , age : 20};
-const b = a;
+const mangnumber = [1,4,2,3,6,0,11];
 
-console.log(a === b);
+console.log(mangnumber.sort((a,b) =>b - a ));
