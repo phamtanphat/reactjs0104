@@ -16,10 +16,12 @@ class Form extends Component {
     addWord(){
         const URL = "http://localhost:4000/word"
         axios.post(URL , {en : this.state.txtEn , vn : this.state.txtVn})
-        .then(response => console.log(response));
-
-        // this.props.addWord(newWord);
-        // this.setState({txtEn : '' , txtVn : ''})
+        .then(response => {
+            if(!response.data.word) throw new Error("Can not add word");
+            this.props.addWord(response.data.word);
+            this.setState({txtEn : '' , txtVn : ''});
+        })
+        .catch(error => alert(error.message));
     }
     toggleForm(){
         this.props.toggleForm();
