@@ -28,15 +28,7 @@ class Word extends Component{
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
                 <button 
-                    onClick={() => {
-                        const URL = "http://localhost:4000/word/";
-                        axios.delete(URL + word._id)
-                        .then(response => {
-                            if(!response.data.word) throw new Error("Can not remove word");
-                            this.props.removeWord(response.data.word._id)
-                        })
-                        .catch(error => alert(error.message));
-                    }}
+                    onClick={() => this.props.removeWord(word._id)}
                     className="btn btn-warning" >
                     Remove
                 </button>
