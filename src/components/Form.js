@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import * as actioncreators from './redux/actioncreators';
+import axios from 'axios';
 
 class Form extends Component {
     constructor(props){
@@ -13,14 +14,12 @@ class Form extends Component {
         this.toggleForm = this.toggleForm.bind(this);
     }
     addWord(){
-        const newWord = {
-            id : Math.random(),
-            en : this.state.txtEn,
-            vn : this.state.txtVn,
-            isMemorized : false
-        }
-        this.props.addWord(newWord);
-        this.setState({txtEn : '' , txtVn : ''})
+        const URL = "http://localhost:4000/word"
+        axios.post(URL , {en : this.state.txtEn , vn : this.state.txtVn})
+        .then(response => console.log(response));
+
+        // this.props.addWord(newWord);
+        // this.setState({txtEn : '' , txtVn : ''})
     }
     toggleForm(){
         this.props.toggleForm();
