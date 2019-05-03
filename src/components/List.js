@@ -3,16 +3,12 @@ import Word from './Word';
 import Form from './Form';
 import Filter from './Filter';
 import {connect} from 'react-redux';
-import axios from 'axios';
+import * as actioncreators from './redux/actioncreators'
 class List extends Component {
-
     componentWillMount(){
         // Neu dung tu android truy vao localhost thong qua ipv4 : http://10.0.0.105:4000/words
-        const URL = "http://localhost:4000/words";
-        axios.get(URL)
-        .then(response => this.props.dispatch({type : 'SET_ALL_WORDS' , words : response.data.words}));
+        this.props.getAllWord();
     }
-
     render() {
         return (
         <div>
@@ -36,6 +32,6 @@ class List extends Component {
 const mapStateToprops = function(state){
     return {words : state.words , filterMode : state.filterMode}
 }
-export default connect(mapStateToprops)(List);
+export default connect(mapStateToprops,actioncreators)(List);
 
 
