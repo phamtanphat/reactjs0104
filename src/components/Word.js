@@ -3,16 +3,6 @@ import {connect} from 'react-redux';
 import * as actioncreators from './redux/actioncreators';
 import axios from 'axios';
 class Word extends Component{
-    async removeWord(){
-        try {
-            const URL = "http://localhost:4000/word/";
-            let response = await axios.delete(URL + this.props.word._id)
-            if(!response.data.word) throw new Error("Can not remove word");
-            this.props.removeWord(response.data.word._id)
-        } catch (error) {
-            alert(error.message);
-        }
-    }
     render(){
         const word = this.props.word;
         return(
@@ -38,7 +28,15 @@ class Word extends Component{
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
                 <button 
-                    onClick={this.removeWord.bind(this)}
+                    onClick={() => {
+                        const URL = "http://localhost:4000/word/";
+                        axios.delete(URL + word._id)
+                        .then(response => {
+                            if(!response.data.word) throw new Error("Can not remove word");
+                            this.props.removeWord(response.data.word._id)
+                        })
+                        .catch(error => alert(error.message));
+                    }}
                     className="btn btn-warning" >
                     Remove
                 </button>
