@@ -1,12 +1,6 @@
 // phương thức sẽ tự gọi dispatch cho giá trị trả về
 import axios from 'axios';
 
-export function toggleWord(Id){
-    return {type : 'TOGGLE_WORD' , _id : Id }
-}
-export function addWord(word){
-    return {type : 'ADD_WORD' , word }
-}
 export function toggleForm(){
     return {type : 'TOGGLE_FORM'}
 }
@@ -29,6 +23,31 @@ export function removeWord(_id){
         .then(response => {
             if(!response.data.word) throw new Error("Can not remove word");
             dispatch({type : 'REMOVE_WORD' , _id : response.data.word._id})
+        })
+        .catch(error => alert(error.message));
+    }
+}
+
+export function toggleWord(_id , isMemorized){
+    return function (dispatch){
+        const URL = "http://localhost:4000/word/";
+        axios.put(URL + _id ,{isMemorized})
+        .then(response => {
+            if(!response.data.word) throw new Error("Can not toggle word");
+            dispatch({type : 'TOGGLE_WORD' , _id : response.data.word._id })
+        })
+        .catch(error => alert(error.message));
+    }
+}
+
+// 
+export function addWord(en , vn){
+    return function(dispatch){
+        const URL = "http://localhost:4000/word"
+        axios.post(URL , {en,vn})
+        .then(response => {
+            if(!response.data.word) throw new Error("Can not add word");
+            dispatch({type : 'ADD_WORD' , word : response.data.word })
         })
         .catch(error => alert(error.message));
     }

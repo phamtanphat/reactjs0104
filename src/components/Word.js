@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actioncreators from './redux/actioncreators';
-import axios from 'axios';
+
 class Word extends Component{
     render(){
         const word = this.props.word;
@@ -15,15 +15,7 @@ class Word extends Component{
                 </div>
                 <div className="btn-container">
                 <button
-                    onClick={() => {
-                        const URL = "http://localhost:4000/word/";
-                        axios.put(URL + word._id ,{isMemorized : !word.isMemorized})
-                        .then(response => {
-                            if(!response.data.word) throw new Error("Can not toggle word");
-                            this.props.toggleWord(response.data.word._id)
-                        })
-                        .catch(error => alert(error.message));
-                    }}
+                    onClick={() => this.props.toggleWord(word._id , !word.isMemorized)}
                     className={word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}>
                     {word.isMemorized ? 'Forgot' : 'Memorized'}
                 </button>
